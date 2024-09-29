@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import '../styles/CreatePost.css';
 
 const CreatePostPage = () => {
   const [title, setTitle] = useState('');
@@ -29,32 +30,33 @@ const CreatePostPage = () => {
   };
 
   return (
-    <div>
-      <h1>Create Post</h1>
-      {error && <p>{error}</p>}
-      <form onSubmit={handleCreate}>
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="Title"
-        />
-        <textarea
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          placeholder="Content"
-        />
-        <label>
-          <input
-            type="checkbox"
-            checked={published}
-            onChange={(e) => setPublished(e.target.checked)}
-          />
-          Published
-        </label>
-        <button type="submit">Create</button>
-      </form>
-    </div>
+    <div className="create-post-container">
+  <h1>Create Post</h1>
+  {error && <p>{error}</p>}
+  <form onSubmit={handleCreate}>
+    <input
+      type="text"
+      value={title}
+      onChange={(e) => setTitle(e.target.value)}
+      placeholder="Title"
+    />
+    <textarea
+      value={content}
+      onChange={(e) => setContent(e.target.value)}
+      placeholder="Content"
+    />
+    <label>
+      <input
+        type="checkbox"
+        checked={published}
+        onChange={(e) => setPublished(e.target.checked)}
+      />
+      Publish
+    </label>
+    <button type="submit">Create</button>
+  </form>
+</div>
+
   );
 };
 

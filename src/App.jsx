@@ -7,6 +7,8 @@ import UpdatePostPage from "./pages/admin/updatePostPage";
 import CreatePostPage from "./pages/admin/CreatePost";
 import SinglePostPage from "./pages/users/SinglePostPage";
 import PostsListPage from "./pages/users/PostListPage";
+import HomePage from "./pages/users/HomePage";
+import Footer from "./pages/users/Footer";
 
 function App() {
   return (
@@ -17,10 +19,11 @@ function App() {
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/update-post/:id" element={<UpdatePostPage />} />
       <Route path="/create-post" element={<CreatePostPage />} /> 
-      <Route path="/" element={<PostsListPage />} />
+      <Route path="/posts" element={<PostsListPage />} />
       <Route path="/posts/:postId" element={<SinglePostPage />} />
+      <Route path='/'element={<HomePage />} />
       </Routes>
-        
+      < Footer />
     </Router>
   );
 }

@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import '../styles/LoginPage.css'
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null); // To store error messages
   const [loading, setLoading] = useState(false); // To show loading state
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -13,13 +16,16 @@ const LoginPage = () => {
     setError(null);    // Clear any previous errors
     try {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/users/login`, { email, password });
+      console.log(response.data);
       const { token, role } = response.data;
       localStorage.setItem('token', token); // Store token on successful login
       localStorage.setItem('role', role); // Store the role
-      if (role === 'ADMIN') {
-        window.location.href = '/dashboard'; // Redirect to admin dashboard
+      // Check if role is passed correctly
+    console.log('User role:', role);
+      if (role === 'AUTHOR') {
+        navigate('/dashboard'); // Redirect to admin dashboard
       } else {
-        window.location.href = '/'; // Redirect to post list for normal users
+        navigate('/posts'); // Redirect to post list for normal users
       }
     } catch (error) {
       setLoading(false);
@@ -28,8 +34,9 @@ const LoginPage = () => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
+    <div className='main-div'>
+      <div className='title'><h2>Login</h2></div>
+      <hr />
       <form onSubmit={handleLogin}>
         <div>
           <label>Email:</label>
@@ -55,6 +62,8 @@ const LoginPage = () => {
       </form>
       {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>
+    
+    
   );
 };
 

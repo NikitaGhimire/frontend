@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import axios from 'axios';
-
+import '../styles/RegisterPage.css';
 const RegisterPage = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('USER'); // Default role
+  
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -18,13 +19,15 @@ const RegisterPage = () => {
       });
       console.log('User registered:', response.data);
       // Redirect or show a success message
-      window.location.href = '/loginPage';
+      window.location.href = '/';
     } catch (error) {
       console.error('Error registering user:', error);
     }
   };
 
   return (
+    <div className="register-form-container">
+    <h1>Register</h1>
     <form onSubmit={handleRegister}>
       <input
         type="text"
@@ -50,6 +53,8 @@ const RegisterPage = () => {
       </select>
       <button type="submit">Register</button>
     </form>
+  </div>
+  
   );
 };
 

@@ -1,0 +1,142 @@
+.all-posts{
+    background: white;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5%;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.all-posts-header {
+    display: flex;
+    justify-content: space-between; /* Aligns title to the left and logout button to the right */
+    align-items: center;
+    width: 100%; /* Takes full width of the container */
+}
+.all-posts h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right, #12c2e9, #c471ed, #f64f59);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+    font-size: 50px;
+}
+.logout-btn{
+    background-color: #f12711;
+    color: white;
+    font-weight: 800;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.post-list{
+    display: grid;
+    width: fit-content;
+    padding: 20px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    
+}
+
+.post-list li{
+    padding: 50px;
+    border: black;
+    border-radius: 5%;
+    gap: 20px;
+    list-style: none;
+}
+
+
+  /* Post list container */
+  .post-list {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+  }
+  
+  /* Each post item styling */
+  .each-post {
+    background: white;
+    padding: 30px;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Post title and content */
+  .each-post h2 {
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .each-post p {
+    margin: 5px 0;
+    color: #666;
+  }
+  
+  /* Add comment section */
+  .each-post input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .each-post button {
+    margin-left: 10px;
+    background-color: #12c2e9;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .each-post button:hover {
+    background-color: #f64f59;
+  }
+  
+  /* Comments section */
+  .each-post ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .each-post li {
+    margin: 10px 0;
+  }
+  
+  .each-post h3 {
+    margin-top: 20px;
+    color: #333;
+  }
+  
+  .each-post li p {
+    color: #444;
+  }
+  
+  /* View Post button */
+  .each-post .view-post-btn {
+    margin-top: 20px;
+    background-color: #12c2e9;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .each-post .view-post-btn:hover {
+    background-color: #f64f59;
+  }
+
+
+

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import '../styles/updatePost.css';
 
 const UpdatePostPage = () => {
   const [title, setTitle] = useState('');
@@ -25,7 +26,7 @@ const UpdatePostPage = () => {
       } catch (err) {
         setError(err.response?.data?.error || 'Failed to fetch post');
         if (err.response?.status === 401) {
-          navigate('/loginPage'); // Redirect to login if unauthorized
+          navigate('/'); // Redirect to login if unauthorized
         }
       }
     };
@@ -52,32 +53,32 @@ const UpdatePostPage = () => {
   };
 
   return (
-    <div>
-      <h1>Update Post</h1>
-      {error && <p>{error}</p>}
-      <form onSubmit={handleUpdate}>
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="Title"
-        />
-        <textarea
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          placeholder="Content"
-        />
-        <label>
-          <input
-            type="checkbox"
-            checked={published}
-            onChange={(e) => setPublished(e.target.checked)}
-          />
-          Published
-        </label>
-        <button type="submit">Update</button>
-      </form>
-    </div>
+    <div className="update-post-container">
+  <h1>Update Post</h1>
+  {error && <p>{error}</p>}
+  <form onSubmit={handleUpdate}>
+    <input
+      type="text"
+      value={title}
+      onChange={(e) => setTitle(e.target.value)}
+      placeholder="Title"
+    />
+    <textarea
+      value={content}
+      onChange={(e) => setContent(e.target.value)}
+      placeholder="Content"
+    />
+    <label>
+      <input
+        type="checkbox"
+        checked={published}
+        onChange={(e) => setPublished(e.target.checked)}
+      />
+      Published
+    </label>
+    <button type="submit">Update</button>
+  </form>
+</div>
   );
 };
 

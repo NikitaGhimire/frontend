@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import '../../pages/styles/allPosts.css';
 
 const PostsListPage = () => {
   const [posts, setPosts] = useState([]);
@@ -109,14 +110,23 @@ const PostsListPage = () => {
     }));
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    navigate('/loginPage'); // Redirect to login page after logout
+  };
+
   return (
-    <div>
+    <div className='all-posts'>
+      <div className='all-posts-header'>
       <h1>Posts</h1>
+      <button className='logout-btn' onClick={handleLogout}>Logout</button>
+      </div>
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
-      <ul>
+      <ul className='post-list'>
         {posts.map(post => (
-          <li key={post.id}>
+          <li key={post.id} className='each-post'>
             <h2>{post.title}</h2>
             <p>{post.content}</p>
             <p><strong>Author:</strong> {post.author.username}</p>
